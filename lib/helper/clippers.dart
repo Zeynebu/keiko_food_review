@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class OvalClipper extends CustomClipper<Path> {
+class OvalClipperUpper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
