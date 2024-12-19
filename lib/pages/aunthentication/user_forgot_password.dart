@@ -13,4 +13,8 @@ class _UserForgotPasswordState extends State<UserForgotPassword> {
   Widget build(BuildContext context) {
     return Container();
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 07-route_classes
