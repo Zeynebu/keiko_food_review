@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-class Review_Map_Location extends StatefulWidget {
-  const Review_Map_Location({super.key});
-  static const String routeName = '/review_map_location';
+class ReviewMapLocation extends StatefulWidget {
+  const ReviewMapLocation({super.key});
+  static const String route = '/review_map_location';
 
   @override
-  State<Review_Map_Location> createState() => _Review_Map_LocationState();
+  State<ReviewMapLocation> createState() => _Review_Map_LocationState();
 }
 
-class _Review_Map_LocationState extends State<Review_Map_Location> {
+// ignore: camel_case_types
+class _Review_Map_LocationState extends State<ReviewMapLocation> {
   @override
   Widget build(BuildContext context) {
     return Container();

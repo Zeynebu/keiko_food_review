@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:keiko_food_review/pages/review_grid_photos/review_grid_photos.dart';
+import 'package:keiko_food_review/pages/review_list/review_list.dart';
+import 'package:keiko_food_review/pages/review_map_location/review_map_location.dart';
+import 'package:keiko_food_review/widget/responsive_layout_builder.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,15 +12,68 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _currentPageIndex = 0;
+  final _bodySelectedPage = <Widget>[
+    const ReviewList(),
+    const ReviewGridPhotos(),
+    const ReviewMapLocation()
+  ];
   @override
-   
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        title: const Text('keiko_food_review',
-         style: TextStyle(fontSize: 20, 
-         fontWeight: FontWeight.bold)),
-      ),
-    );   
+    return ResponsiveLayoutBuilder(
+      mobile: Scaffold(
+        body: _bodySelectedPage[_currentPageIndex],
+        bottomNavigationBar: NavigationBar(
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.reviews), label: "reviews",),
+            NavigationDestination(icon: Icon(Icons.photo_library_outlined), label: "photos"),
+            NavigationDestination(icon: Icon(Icons.location_on), label: "location"),
+          ],
+          selectedIndex: _currentPageIndex,
+          onDestinationSelected: (int index) {
+            setState(() {
+              _currentPageIndex = index;
+            });
+          },
+        ),
+      ), 
+      webDesktopTablet:  Scaffold(
+        body: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondaryContainer,
+                  ])
+              ),
+              child: NavigationRail(
+                backgroundColor: Colors.transparent,
+                labelType: NavigationRailLabelType.all,
+                leading: Padding(padding: const EdgeInsets.only(bottom: 24.0), 
+                child: Image.asset('name',
+                width: 48.0,
+                fit: BoxFit.cover,
+                ),
+                ),
+                destinations: const [
+                  NavigationRailDestination(icon: Icon(Icons.reviews), label: Text("reviews")),
+                  NavigationRailDestination(icon: Icon(Icons.photo_library_outlined), label: Text("photos")),
+                  NavigationRailDestination(icon: Icon(Icons.location_on), label: Text("location")),
+                ],
+                selectedIndex: _currentPageIndex,
+                onDestinationSelected: (int index) {
+                  setState(() {
+                    _currentPageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Expanded(child: _bodySelectedPage[_currentPageIndex]),
+          ],
+        ),
+      )
+      )
+    ;
   }
 }

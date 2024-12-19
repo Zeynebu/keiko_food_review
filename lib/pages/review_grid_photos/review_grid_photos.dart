@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 class ReviewGridPhotos extends StatefulWidget {
   const ReviewGridPhotos({super.key});
-  static const String routeName = '/review_grid_photos';
+  static const String route = '/review_grid_photos';
 
   @override
   State<ReviewGridPhotos> createState() => _ReviewGridPhotosState();
