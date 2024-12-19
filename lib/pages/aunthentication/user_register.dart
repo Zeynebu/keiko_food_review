@@ -13,8 +13,4 @@ class _UserRegisterState extends State<UserRegister> {
   Widget build(BuildContext context) {
     return Container();
   }
-<<<<<<< HEAD
-=======
-  
->>>>>>> 07-route_classes
 }

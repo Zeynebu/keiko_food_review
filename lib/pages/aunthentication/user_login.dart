@@ -13,8 +13,4 @@ class _UserLoginState extends State<UserLogin> {
   Widget build(BuildContext context) {
     return Container();
   }
-<<<<<<< HEAD
-=======
-  
->>>>>>> 07-route_classes
 }
